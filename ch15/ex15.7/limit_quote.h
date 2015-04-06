@@ -11,7 +11,7 @@ public:
         Quote(b,p), max_qty(max), discount(disc)    {   }
 
     double net_price(std::size_t n) const override
-    { return n * price * (n < max_qty ? 1 - discount : 1 ); }
+    { return price * (n - discount * (n > max_qty ? max_qty : n)); }
 
 private:
     std::size_t max_qty     = 0;
